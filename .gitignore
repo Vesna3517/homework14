@@ -1,2 +1,7 @@
 #credentials
 terraform.tfvars
+depkey.pem
+#terraform
+.terraform.*.*
+terraform.*.*
+terraform.*
