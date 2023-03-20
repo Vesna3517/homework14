@@ -46,13 +46,13 @@ resource "aws_instance" "build" {
       "sudo git clone https://github.com/Vesna3517/boxfuse-sample-java-war-hello-copy.git /usr/src/boxfuse",
       "cd /usr/src/boxfuse",
       "sudo mvn package",
-      "export AWS_ACCESS_KEY_ID=var.aws_access_key",
-      "export AWS_SECRET_ACCESS_KEY=var.aws_secret_key",
+      "export AWS_ACCESS_KEY_ID=${var.aws_access_key}",
+      "export AWS_SECRET_ACCESS_KEY=${var.aws_secret_key}",
       "export AWS_DEFAULT_REGION=eu-central-1",
       "sudo aws configure ",
       "export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain msk --domain-owner 914838084400 --query authorizationToken --output text`",
       "cd /usr/src/boxfuse/target",
-      "curl --request PUT https://msk-914838084400.d.codeartifact.eu-central-1.amazonaws.com/maven/newrepo/com/mycompany/app/my-app/1.0/hello-1.0.war --user "aws:$CODEARTIFACT_AUTH_TOKEN" --header "Cnewrepom" --data-binary @hello-1.0.war"
+      "curl --request PUT https://msk-914838084400.d.codeartifact.eu-central-1.amazonaws.com/maven/newrepo/com/mycompany/app/my-app/1.0/hello-1.0.war --user aws:$CODEARTIFACT_AUTH_TOKEN --header Cnewrepom --data-binary @hello-1.0.war"
     ]
 }
 }
